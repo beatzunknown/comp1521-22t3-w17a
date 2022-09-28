@@ -1,0 +1,84 @@
+Address       Data Definition
+0x10010000    aa:  .word 42
+0x10010004    bb:  .word 666
+0x10010008    cc:  .word 1
+0x1001000C         .word 3
+0x10010010         .word 5
+0x10010014         .word 7
+
+
+a)
+la   $t0, aa
+
+$t0 = 0x10010000
+
+b)
+lw   $t0, bb
+
+$t0 = 666
+
+c)
+lb   $t0, bb
+
+you might think that
+$t0 = 0x0000029A
+
+but on little endian, the byte that is loaded
+is the least significant byte (right-most):
+0x9A
+
+in binary this is 1001 1010
+
+since the leading sign bit (left most) is a 1,
+sign extension makes the 32 bits become:
+1111 1111 1111 1111 1111 1111 1001 1010
+
+Or 0xFFFFFF9A
+
+thus,
+$t0 = 0xFFFFFF9A
+
+d)
+lw   $t0, aa+4
+
+$t0 = 666
+
+e)
+la   $t1, cc
+lw   $t0, ($t1)
+
+$t1 = 0x10010008
+$t0 = 1
+
+f)
+la   $t1, cc
+lw   $t0, 8($t1)
+
+note, this syntax is equivalent to the below:
+
+la   $t1, cc
+addi $t1, $t1, 8
+lw   $t0, ($t1)
+
+outside number is called "offset"
+add offset to number in register = address
+8($t1) = ($t1 + 8)
+
+$t1 = 0x10010008
+$t0 = 5
+
+g)
+li   $t1, 8
+lw   $t0, cc($t1)
+
+$t1 = 8
+$t0 = 5
+
+h)
+la   $t1, cc
+lw   $t0, 2($t1)
+
+$t1 = 0x10010008
+
+address error, due to 32-bit memory alignment requirement
+
