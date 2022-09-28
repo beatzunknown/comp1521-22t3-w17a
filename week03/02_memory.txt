@@ -8,7 +8,7 @@
          +-----------+---------------------+
         c| 0x10010028|   a b c  d          |   0x61626364
          +-----------+---------------------+
-         | 0x1001002C| e \0  00 00         |   0x65000000
+         | 0x1001002C| e \0  ?? ??         |   0x6500????
          +-----------+---------------------+
        *d| 0x10010030|  1  2  3   4        |   0x01020304
          +-----------+---------------------+
@@ -29,5 +29,5 @@
     If it were .align 3, then `d` would have to be at an
     address that is a multiple of 8 (2^3)
 
-    This is why there are 2 bytes of \x00 padding at the end
-    of `c` - to enforce this alignment of `d`.
+    This is why there are 2 bytes of padding at the end of `c`,
+    to enforce the alignment of `d`.
