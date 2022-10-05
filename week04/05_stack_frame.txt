@@ -1,0 +1,30 @@
+
+
+
+
+
+       0xFFFFFFFF +           +------------------------+
+                  |           |  Existing stack stuff  |
+                  |           |                        |
+                  |           +------------------------+  +
+         stack    |           |  preserved $ra         |  |  stack frame for main
+         grows    |           |  to system code        |  v
+         down     |           +------------------------+  +
+                  |           |  preserved $ra         |  |
+                  |           |  to main               |  |
+                  |           +------------------------+  |
+                  |           |  preserved $s0         |  |
+                  |           |                        |  |
+                  |           +------------------------+  |
+                  |           |  preserved $s1         |  |  stack frame
+                  |           |                        |  |  for sum4
+                  |           +------------------------+  |
+                  |           |  preserved $s2         |  |
+                  v           |                        |  |
+                              +------------------------+  |
+                              |  preserved $s3         |  |
+                              |                        |  |
+                              +------------------------+  |
+                              |  preserved $s4         |  |
+                              |                        |  |
+                         $sp  +------------------------+  v

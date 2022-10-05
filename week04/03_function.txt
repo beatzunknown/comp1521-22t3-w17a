@@ -1,0 +1,78 @@
+Currently we've been doing 3 things:
+1. Using `$t` registers and not `$s`
+2. Ignoring `jr $ra` beyond returning from `main`
+3. Not using the stack
+
+This was just to keep things simple. Why won't
+complex programs work like this???
+
+
+
+1. Why just `$t` registers is insufficient?
+	- t implies temporary, so not suitable to just use
+	  $t registers for data we NEED to not get 
+	  CLOBBERED / modified
+	- we only have 10 $t registers which would be
+	  insufficient for larger programs
+
+
+
+2. Why should we care about `$ra`?
+	- how does our code know where to go after
+	  running another function?
+
+caller:
+	# do stuff
+
+	# get callee function to do stuff
+	# and set $ra to address of next instruction
+	# after the jal
+	jal	callee
+
+	# jr to $ra from callee, takes us here
+	# do more stuff
+
+callee:
+	# do something
+
+	jr	$ra
+
+
+
+3. Why would we need to use the stack?
+	- to preserve $s(aved) registers
+	- to preserve $ra
+
+
+main:
+	jal func1
+
+	li $v0, 1
+	jr $ra
+
+
+
+func1:
+	# do stuff
+
+	li 	$s0, 5
+	li 	$s1, 1
+
+	jal func2
+
+	# do stuff that assumes $s0 is still 5
+
+	jr $ra
+	# where did this actually jump to?
+
+
+func2:
+	# do stuff
+
+	li $s0, 789
+
+	# do more stuff
+
+	jr $ra
+
+

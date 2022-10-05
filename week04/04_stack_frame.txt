@@ -1,0 +1,23 @@
+
+
+
+
+
+       0xFFFFFFFF +           +------------------------+
+                  |           |  Existing stack stuff  |
+                  |           |                        |
+                  |           +------------------------+  +
+         stack    |           |    preserved $ra       |  |  stack frame
+         grows    |           |    back to system code |  v  for main
+         down     |           +------------------------+
+                  |           |  preserved $ra         |  |
+                  |           |  back to main          |  |
+                  |           +------------------------+  |   stack frame
+                  |           |  preserved $s0         |  |   for change
+                  |           |                        |  |
+                  |           +------------------------+  |
+                  |           |  preserved $s1         |  |
+                  |           |                        |  |
+                  |      $sp  +------------------------+  v
+                  |
+                  v
