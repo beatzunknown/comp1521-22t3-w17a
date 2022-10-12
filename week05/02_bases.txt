@@ -1,0 +1,65 @@
+"dec"imal     = base 10, supports 0-9
+"bi"nary      = base 2,	 supports 0-1
+"oct"al       = base 8,  supports 0-7
+"hexadec"imal = base 16, supports 0-9 A-F
+
+1011 in binary, to decimal:
+	1 			0 			1 			1
+(1 x 2^3) + (0 x 2^2) + (1 x 2^1) + (1 x 2^0)
+(1 x 8)	  + (0 x 4)   + (1 x 2)   + (1 x 1)
+	8	  +		0 	  + 	2 	  + 	1
+= 11
+
+137 in octal, to decimal:
+	1 			3 			7
+(1 x 8^2) + (3 x 8^1) + (7 x 8^0)
+(1 x 64)  + (3 x 8)   + (7 x 1)
+	64			24			7
+= 95
+
+0xB4 in hexadecimal, to decimal:
+	 B 			  4
+	 11 		  4
+(11 x 16^1) + (4 x 16^0)
+(11 x 16)   + (4 x 1)
+	 176	+	  4
+= 180
+
+Question 2
+
+b) 8
+8-bit binary:
+00001000
+
+
+3-digit octal:
+010
+
+
+2-digit hexadecimal:
+0x08
+
+
+e) 16
+8-bit binary:
+00010000
+
+3-digit octal:
+020
+
+2-digit hexadecimal:
+0x10
+
+
+
+h) 200
+8-bit binary:
+11001000
+
+
+3-digit octal:
+0310
+
+
+2-digit hexadecimal:
+0xC8

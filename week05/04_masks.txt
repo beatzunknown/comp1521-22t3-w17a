@@ -1,0 +1,44 @@
+Mask / bitmask - sequence of bits used to focus on particular bits of another sequence.
+Masking - the act of applying a mask to a value
+
+
+
+data: 11001010
+mask: 10000100
+
+
+Bitmask operations:
+	set a bit:    data | mask
+	unset a bit:  data & ~mask
+	check a bit:  data & mask
+	toggle a bit: data ^ mask
+
+
+4.
+READING		0000 0001
+WRITING		0000 0010
+AS_BYTES	0000 0100
+AS_BLOCK 	0000 1000
+LOCKED 		0001 0000
+
+unsigned char device; //0000 0000
+device = 0;
+
+a)
+device = device | LOCKED | READING | AS_BYTES;
+
+b)
+device = device | LOCKED | WRITING | AS_BLOCKS;
+
+c)
+device = device | LOCKED;
+
+d)
+device = device & ~LOCKED;
+
+e)
+device = device & ~READING | WRITING
+
+f)
+device = device ^ WRITING ^ READING;
+
