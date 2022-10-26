@@ -1,0 +1,14 @@
+a) union { int a; int b; } u1;
+4 bytes
+
+b) union { unsigned short a; char b; } u2;
+2 bytes
+
+c) union { int a; char b[12]; } u3;
+12 bytes
+
+d) union { int a; char b[14]; } u4;
+16 bytes (with padding on string)
+
+e) union { unsigned int a; int b; struct { int x; int y; } c; } u5;
+8 bytes

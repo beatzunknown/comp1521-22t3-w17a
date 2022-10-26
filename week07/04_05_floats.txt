@@ -1,0 +1,86 @@
+Single-precision floating point (IEEE 754) - 32 bits
+Breakdown (from MSB to LSB)
+	Sign - 1 bit
+	Exponent - 8 bits
+	Fraction/Mantissa - 23 bits
+
+Bit pattern: S EEEEEEEE FFFFFFFFFFFFFFFFFFFFFFF
+
+Value: (-1)^sign x (1 + frac) x 2^(exponent - bias)
+Bias is 127, allowing for power range of (-127 - 128)
+
+NaN - Not a Number
+	Exponent = 0xFF or 1111 1111
+	Fraction != 0
+	Sign = 1 or 0
+
+Infinity
+	Exponent = 0xFF or 1111 1111
+	Fraction = 0
+	Sign = 0 for +INF, 1 for -INF
+
+Zero
+	Exponent = 0
+	Fraction = 0
+	Sign = 1 or 0
+
+Smallest possible normal number:
+	fraction = 1
+	exponent = 1
+	value = 1 x (1 + 2^(-23)) x 2(-126)
+
+Denormal / Subnormal (NOT IN THE COURSE)
+	Allow for smaller number
+	Exponent is 0, and mantissa leading bit is 0
+	Value: (-1)^sign x (0 + frac) x 2^(-126)
+
+4.
+c) 0 01111111 10000000000000000000000
+Sign = 0 / +
+Exponent = 127
+Fraction = 0.5 + 0
+ans = (-1)^0 x (1 + 0.5) x 2^(127-127)
+    = 1 x 1.5 x 1
+    = 1.5
+
+e) 0 01111110 11111111111111111111111
+Sign = 0 / +
+Exponent = 126
+Fraction = 0.9999999
+ans = (-1)^0 x (1 + 0.9999999) x 2^(126-127)
+    = 1 x 1.9999999 x 2^(-1)
+    = 1 x 1.9999999 x 0.5
+    = 0.9999999
+
+g) 0 10010100 10000000000000000000000
+Sign = 0 / +
+Exponent = 148
+Fraction = 0.5
+ans = (-1)^0 x (1 + 0.5) x 2^(148 - 127)
+    = 1 x 1.5 x 2^21
+    = 3145728.00
+
+5.
+a) 2.5 = 1.25 x 2^(1)
+	   = (1 + 0.25) x 2^(128 - 127)
+Sign = 0
+Exponent = 10000000
+0.25 - 0.25 = 0
+Fraction = 01000000000000000000000
+Bits = 0 10000000 01000000000000000000000
+
+
+d) 100 = 1.5625 x 2^(6)
+	   = (1 + 0.5625) x 2^(133 - 127)
+Sign = 0
+Exponent = 10000101
+0.5625 - 0.5 = 0.0625 - 0.0625 = 0
+Fraction = 10010000000000000000000
+Bits = 0 10000101 10010000000000000000000
+
+ALTERNATIVELY FOR FRACTION
+
+binary of 100 = 1100100
+break off leading bit, rest become fraction,
+and append 0s
+

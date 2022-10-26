@@ -1,0 +1,28 @@
+2.
+i)
+hex: 0x0013
+binary: 0000 0000 0001 0011
+dec: 19
+
+iv)
+Two's Complement
+aka "flip the bits, plus one"
+
+0xFFFF -    1111 1111 1111 1111
+Flip bits - 0000 0000 0000 0000
+Plus one -  0000 0000 0000 0001
+So, 0xFFFF = -1
+
+v)
+hex: 0x8000
+0x8000 -    1000 0000 0000 0000
+Flip bits - 0111 1111 1111 1111
+Plus one -  1000 0000 0000 0000
+So, 0x8000 = -2^15 = -32768
+
+3, vii)
+-100 - 	     -0000 0000 0110 0100
+Flip bits -   1111 1111 1001 1011
+Plus one -    1111 1111 1001 1100
+hex = 0xFF9C
+octal = 0177634

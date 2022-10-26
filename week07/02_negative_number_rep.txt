@@ -1,0 +1,54 @@
+There are 3 main ways to represent negative number in binary. All examples are using 8 bits.
+
+Basic structure is 1 sign bit followed by 7 magnitude bits:
+	1 1111111
+
+Note: the sign bit is the MSB (most significant bit)
+Right-most bit is the LSB or least significant bit
+
+SIGNED MAGNITUDE
+Magnitude is the same regardless of positive/negative.
+Sign bit can be:
+	0 - number is positive
+	1 - number is negative
+
+00000011 in binary is 3 in decimal.
+10000011 in binary is -3 in decimal.
+
+This also means there are 2 ways to represent 0:
+	10000000
+	00000000
+
+
+
+1'S COMPLEMENT
+If the sign bit is 0, the number is positive so we do nothing.
+If the sign bit is 1, the number is negative.
+Flip all the bits to get magnitude (value) of negative number
+
+Eg: 10010011
+Sign bit is 1, so number is negative
+The complement (all bits flipped): 01101100 = 108
+so 10010011 = -108
+
+There are also 2 ways to represent 0:
+	00000000
+	11111111
+
+
+
+2'S COMPLEMENT
+If the sign bit is 0, the number is positive so we do nothing.
+If the sign bit is 1, the number is negative.
+To get the 2's complement, "flip the bits and add 1"
+
+Eg: 10010011
+Sign bit is 1, so number is negative
+The complement (all bits flipped): 01101100
+Add 1: 01101101 = 109
+so 10010011 = -109
+
+There is now only 1 way to represent 0: 00000000
+
+
+Good read: https://www.ralismark.xyz/posts/twos-complement
